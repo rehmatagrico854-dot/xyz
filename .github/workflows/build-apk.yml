@@ -40,4 +40,3 @@ jobs:
         with:
           name: worksheet-apk
           path: platforms/android/app/build/outputs/apk/release/*.apk
-```

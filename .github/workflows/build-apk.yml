@@ -1,3 +1,4 @@
+```yaml
 name: Build APK
 
 on:
@@ -11,5 +12,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Cordova dependencies
+        run: npm install
+
+      - name: Add Android platform
+        run: npx cordova platform add android
+
+      - name: Build Android APK
+        run: npx cordova build android --release
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: worksheet-apk
+          path: platforms/android/app/build/outputs/apk/release/*.apk
+```

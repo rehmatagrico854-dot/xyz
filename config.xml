@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.personal.worksheet" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Work Sheet</name>
+    <description>
+        Personal daily routine tracker: pending works, reminders, calendar and completed tasks. For personal/offline use only, not distributed on any app store.
+    </description>
+    <author email="you@example.com" href="https://example.com">
+        Personal Use
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="Fullscreen" value="false" />
+    <preference name="android-minSdkVersion" value="22" />
+    <preference name="android-targetSdkVersion" value="34" />
+    <preference name="BackupWebStorage" value="local" />
+
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:usesCleartextTraffic="true" />
+        </edit-config>
+        <icon density="ldpi" src="www/icons/icon.png" />
+        <icon density="mdpi" src="www/icons/icon.png" />
+        <icon density="hdpi" src="www/icons/icon.png" />
+        <icon density="xhdpi" src="www/icons/icon.png" />
+        <icon density="xxhdpi" src="www/icons/icon.png" />
+        <icon density="xxxhdpi" src="www/icons/icon.png" />
+    </platform>
+</widget>

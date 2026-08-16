@@ -1,0 +1,19 @@
+{
+  "name": "worksheet-app",
+  "displayName": "Work Sheet",
+  "version": "1.0.0",
+  "description": "Personal daily routine tracker (pending works, reminders, calendar, completed tasks) packaged as an Android app via Cordova. For personal sideloading only, not for Play Store.",
+  "private": true,
+  "cordova": {
+    "platforms": [
+      "android"
+    ],
+    "plugins": {
+      "cordova-plugin-local-notification": {}
+    }
+  },
+  "devDependencies": {
+    "cordova": "^12.0.0",
+    "cordova-android": "^13.0.0"
+  }
+}

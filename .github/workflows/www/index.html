@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+<title>Work Sheet</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <h1>Work Sheet</h1>
+    <div class="clock" id="clock">
+      <div id="timeNow">--:--:--</div>
+      <div id="dateNow">-- --- ----</div>
+    </div>
+  </header>
+
+  <!-- Tab content -->
+  <main id="mainContent">
+
+    <!-- DASHBOARD -->
+    <section class="tab-page active" id="page-dashboard">
+      <div class="card summary-card">
+        <h2>Today's Summary</h2>
+        <div class="summary-grid">
+          <div class="summary-box pending">
+            <span class="num" id="sumPending">0</span>
+            <span class="lbl">Pending</span>
+          </div>
+          <div class="summary-box completed">
+            <span class="num" id="sumCompleted">0</span>
+            <span class="lbl">Completed</span>
+          </div>
+          <div class="summary-box reminders">
+            <span class="num" id="sumReminders">0</span>
+            <span class="lbl">Reminders</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Quick Add Task</h2>
+        <form id="quickAddForm">
+          <input type="text" id="quickTaskTitle" placeholder="What needs to be done?" required>
+          <textarea id="quickTaskRemarks" placeholder="Remarks (optional)"></textarea>
+          <button type="submit" class="btn-primary">+ Add Task</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Mini Calendar</h2>
+        <div id="miniCalendar"></div>
+      </div>
+    </section>
+
+    <!-- PENDING -->
+    <section class="tab-page" id="page-pending">
+      <h2 class="page-title">Pending Works</h2>
+      <div id="pendingList" class="task-list"></div>
+      <p class="empty-msg" id="pendingEmpty">No pending tasks. Add one from Dashboard.</p>
+    </section>
+
+    <!-- COMPLETED -->
+    <section class="tab-page" id="page-completed">
+      <h2 class="page-title">Completed Works</h2>
+      <div id="completedList" class="task-list"></div>
+      <p class="empty-msg" id="completedEmpty">No completed tasks yet.</p>
+    </section>
+
+    <!-- REMINDERS -->
+    <section class="tab-page" id="page-reminders">
+      <h2 class="page-title">Reminders</h2>
+      <div class="card">
+        <form id="reminderForm">
+          <input type="text" id="reminderTitle" placeholder="Reminder title" required>
+          <input type="date" id="reminderDate" required>
+          <input type="time" id="reminderTime" required>
+          <textarea id="reminderRemarks" placeholder="Remarks (optional)"></textarea>
+          <button type="submit" class="btn-primary">+ Add Reminder</button>
+        </form>
+      </div>
+      <div id="reminderList" class="task-list"></div>
+      <p class="empty-msg" id="reminderEmpty">No reminders set.</p>
+    </section>
+
+    <!-- CALENDAR -->
+    <section class="tab-page" id="page-calendar">
+      <h2 class="page-title">Calendar</h2>
+      <div class="card">
+        <div class="cal-nav">
+          <button id="calPrev">&#8249;</button>
+          <span id="calMonthLabel"></span>
+          <button id="calNext">&#8250;</button>
+        </div>
+        <div id="fullCalendar"></div>
+      </div>
+      <div class="card">
+        <h3 id="selectedDayLabel">Select a date</h3>
+        <div id="selectedDayTasks" class="task-list"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom nav -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-page="dashboard">
+      <span class="icon">&#8962;</span><span>Home</span>
+    </button>
+    <button class="nav-btn" data-page="pending">
+      <span class="icon">&#128203;</span><span>Pending</span>
+    </button>
+    <button class="nav-btn" data-page="completed">
+      <span class="icon">&#10003;</span><span>Done</span>
+    </button>
+    <button class="nav-btn" data-page="reminders">
+      <span class="icon">&#128276;</span><span>Remind</span>
+    </button>
+    <button class="nav-btn" data-page="calendar">
+      <span class="icon">&#128197;</span><span>Calendar</span>
+    </button>
+  </nav>
+
+</div>
+
+<!-- Task edit / remarks modal -->
+<div id="modalOverlay" class="modal-overlay">
+  <div class="modal-box">
+    <h3 id="modalTitle">Edit Task</h3>
+    <textarea id="modalRemarks" placeholder="Remarks"></textarea>
+    <div class="modal-actions">
+      <button id="modalSave" class="btn-primary">Save</button>
+      <button id="modalCancel" class="btn-secondary">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="cordova.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
